@@ -1,0 +1,55 @@
+nav{
+    display: fixed;
+    .col-12{
+        background: $base-bg-color;
+        padding: 25px;
+        box-shadow: 0 0 5px $dark-color;
+        display: flex;
+        .navbar{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            &-user{
+                a{
+                    margin-left: 1.5rem;
+                }
+                .contact{
+                    background: $white-color;
+                    color: $dark-color;
+                    padding: .5rem;
+                    border-radius: .25rem;
+                    transition: .3s;
+                    &::before{
+                        content: '';
+                        width: 0;
+                        height: 0;
+                    }
+                    &:hover{
+                        background: rgb(218, 218, 218);
+                    }
+                }
+            }
+        }
+    }
+    a{
+        color: $white-color;
+        margin-left: 10px;
+        padding-bottom: 10px;
+        position: relative;
+        &::before{
+            content: '';
+            width: 100%;
+            height: 3px;
+            background: $white-color;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -20px;
+            opacity: 0;
+            transition: all .3s;
+        }
+        &:hover::before{
+            bottom: 0;
+            opacity: 1;
+        }
+    }
+}
