@@ -29,6 +29,7 @@
                         height: 3px;
                         background: $white-color;
                         border-radius: 4px;
+                        box-shadow: 0 0 20px $black-color;
                         transition: .3s;
                     }
                 }
@@ -52,13 +53,34 @@
 .fast-shortener{
     background: #350061;
     .form{
+        .col-md-7{
+            overflow: hidden;
+        }
+        .url-input-container{
+            @include input-container;
+            left: 0;
+        }
+        .password-input-container{
+            @include input-container;
+            top: -60px;
+            right: -400%;
+        }
         input{
             width: 100%;
             height: 60px;
             box-shadow:  0 0 7px $dark-color inset;
             font-size: 1.25rem;
+            border: 0;
+            outline: 0;
         }
-        button{
+        .next-btn, .previous-btn{
+            width: 70px;
+            height: 60px;
+            position: absolute;
+            right: 0;
+            background: $base-color;
+        }
+        .btn{
             background: $base-color;
             color: $white-color;
             font-size: x-large;
