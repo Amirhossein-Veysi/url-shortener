@@ -6,24 +6,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@-webkit-keyframes drop-down {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: unset;
-  }
-}
-
-@keyframes drop-down {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: unset;
-  }
-}
-
 img {
   -webkit-user-drag: none;
   -ms-user-select: none;
@@ -40,9 +22,6 @@ button, input, textarea {
 .btn-purple {
   background: #8c00ff;
   color: #fff;
-  font-size: x-large;
-  border-radius: 5px;
-  padding: 15px 50px;
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -50,6 +29,24 @@ button, input, textarea {
 .btn-purple:hover {
   background: #7500d4;
   color: #fff;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .navbar {
@@ -102,6 +99,12 @@ button, input, textarea {
   }
 }
 
+.details .btn-purple {
+  font-size: x-large;
+  border-radius: 5px;
+  padding: 15px 50px;
+}
+
 @media only screen and (min-width: 992px) {
   .details {
     min-height: 100vh;
@@ -125,16 +128,16 @@ button, input, textarea {
 .fast-shortener .form .url-input-container {
   position: relative;
   width: 100%;
-  -webkit-transition: .6s;
-  transition: .6s;
+  -webkit-transition: .4s;
+  transition: .4s;
   left: 0;
 }
 
 .fast-shortener .form .password-input-container {
   position: relative;
   width: 100%;
-  -webkit-transition: .6s;
-  transition: .6s;
+  -webkit-transition: .4s;
+  transition: .4s;
   top: -60px;
   right: -400%;
 }
@@ -157,7 +160,7 @@ button, input, textarea {
   background: #8c00ff;
 }
 
-.fast-shortener .form .btn {
+.fast-shortener .form .btn-purple {
   background: #8c00ff;
   color: #fff;
   font-size: x-large;
@@ -168,7 +171,7 @@ button, input, textarea {
   transition: .2s;
 }
 
-.fast-shortener .form .btn:hover {
+.fast-shortener .form .btn-purple:hover {
   background: #7500d4;
   color: #fff;
 }
@@ -184,5 +187,17 @@ button, input, textarea {
 
 .fast-shortener .form p a:hover {
   color: #8c00ff;
+}
+
+.fast-shortener .form .alert {
+  -webkit-animation: fadein 1s;
+          animation: fadein 1s;
+}
+
+.fast-shortener .form .alert-secondary p {
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 /*# sourceMappingURL=main.css.map */

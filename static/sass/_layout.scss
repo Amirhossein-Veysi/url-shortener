@@ -41,6 +41,11 @@
 //! Details
 
 .details{
+    .btn-purple{  
+        font-size: x-large;
+        border-radius: 5px;
+        padding: 15px 50px;
+    }
     @media only screen and (min-width: 992px) {
         min-height: 100vh;
         display: flex;
@@ -80,7 +85,7 @@
             right: 0;
             background: $base-color;
         }
-        .btn{
+        .btn-purple{
             background: $base-color;
             color: $white-color;
             font-size: x-large;
@@ -100,6 +105,17 @@
                 text-decoration: underline;
                 &:hover{
                     color: $base-color;
+                }
+            }
+        }
+        .alert{
+            animation: fadein 1s;
+            &-secondary{
+                p{
+                    width: 90%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                 }
             }
         }

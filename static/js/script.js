@@ -2,13 +2,29 @@
 
 let scrlSmSiz = 567;
 
+let dElFstShrtnrOfstTp = $('.fast-shortener').offset().top;
+
+let dElFstShrtnrPswrdInp = $('.fast-shortener .password-input-container input');
+
+let dElFstShrtnrUrlInp = $('.fast-shortener .url-input-container input');
+
+let urlRegx = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+
 //! DOM Event
 
 $(window).on('resize', deNvBrClpsHidHandler);
 
+$('#get-started').on('click', deGtStrtdBtnClckHandler);
+
 $('.next-btn').on('click', deUrlInpMovrToLft);
 
 $('.previous-btn').on('click', deUrlInpMovrToRigt);
+
+$('.fast-shortener form').on('submit', {far : 'boo'}, defstShrtnrSubHandler);
+
+function deCpyShrtLnkBtnClck() {
+    $('.fast-shortener .copy-btn').on('click', deCpyShrtLnkBtnClckHandler);
+}
 
 //! DOM Event Handler
 
@@ -18,6 +34,10 @@ function deNvBrClpsHidHandler(){
     }else{
         $('.navbar-collapse-sm').attr('style', '');
     }
+}
+
+function deGtStrtdBtnClckHandler(){
+    $('html, body').stop(true, true).delay(200).animate({scrollTop : String(dElFstShrtnrOfstTp)}, 500);
 }
 
 function deUrlInpMovrToLft(){
@@ -30,9 +50,48 @@ function deUrlInpMovrToRigt(){
     $('.password-input-container').css('right', '-200%');
 }
 
+function defstShrtnrSubHandler(){
+    event.preventDefault();
+    if (dElFstShrtnrUrlInp.val() == ''){
+
+        $('.fast-shortener .alert-danger').html('Please enter a URL to make shorten!').addClass('d-block');
+
+    }else if(!urlRegx.test(dElFstShrtnrUrlInp.val())){
+
+        $('.fast-shortener .alert-danger').html('Please enter a valid URL to make shorten!').addClass('d-block');
+
+    }else{
+        $.post("make/index.php", {
+          url: dElFstShrtnrUrlInp.val(), // add the url
+          password: dElFstShrtnrPswrdInp.val()// add password if there is or else do not add it in the request
+        },
+        function(data){
+            $('.fast-shortener .alert-danger').removeClass('d-block');
+            $('.fast-shortener .alert-secondary').html(`<button type="button" class="btn btn-outline-primary mr-5 copy-btn">Copy</button> \n
+            <p class="mb-0 pt-2"><a href="${data}">${data}</a></p>`).addClass('d-flex');
+
+            deCpyShrtLnkBtnClck(); // To fond element (btn) when it will be added to documnet
+        });
+    }
+}
+
+function deCpyShrtLnkBtnClckHandler() {
+    copyToClipboard($('.fast-shortener .alert-secondary a').attr('href'));
+}
+
 //! Aditinal Functions
 
-
+function copyToClipboard(str) {
+    let el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
 
 //! Aditinal Call
 

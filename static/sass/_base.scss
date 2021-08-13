@@ -16,14 +16,3 @@ $secondary-color: #999;
     box-sizing: border-box;
     font-family:Arial, Helvetica, sans-serif;
 }
-
-//! Animations
-
-@keyframes drop-down {
-    0%{
-        height: 0;
-    }
-    100%{
-        height: unset;
-    }
-}
