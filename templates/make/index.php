@@ -23,10 +23,10 @@ try{
     $shortURL = $shortURL_Prefix.$shortCode;
     
     // Display short URL
-    echo $shortURL;
+    echo json_encode($shortURL);
 }catch(Exception $e){
     // Display error
-    echo 'Something went wrong! here is the error: ' . $e->getMessage();
+    echo json_encode('Something went wrong! here is the error: ' . $e->getMessage());
 }
 
 ?>

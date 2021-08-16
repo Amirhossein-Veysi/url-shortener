@@ -61,25 +61,38 @@ function defstShrtnrSubHandler(){
         $('.fast-shortener .alert-danger').html('Please enter a valid URL to make shorten!').addClass('d-block');
 
     }else{
-        $.post("make/index.php", {
-          url: dElFstShrtnrUrlInp.val(), // add the url
-          password: dElFstShrtnrPswrdInp.val()// add password if there is or else do not add it in the request
-        },
-        function(data){
-            $('.fast-shortener .alert-danger').removeClass('d-block');
-            $('.fast-shortener .alert-secondary').html(`<button type="button" class="btn btn-outline-primary mr-5 copy-btn">Copy</button> \n
-            <p class="mb-0 pt-2"><a href="${data}">${data}</a></p>`).addClass('d-flex');
-
-            deCpyShrtLnkBtnClck(); // To fond element (btn) when it will be added to documnet
-        });
+        sndRqstToShrtnr();
     }
 }
 
 function deCpyShrtLnkBtnClckHandler() {
     copyToClipboard($('.fast-shortener .alert-secondary a').attr('href'));
+    $('.fast-shortener .copy-btn').html('Copied!').addClass('bg-primary text-white');
+    setTimeout(()=>{
+        $('.fast-shortener .copy-btn').html('Copy').removeClass('bg-primary text-white');
+    }, 2000);
 }
 
 //! Aditinal Functions
+
+function  sndRqstToShrtnr() {
+    $.post("make/", {
+        url: dElFstShrtnrUrlInp.val(), // add the url
+        password: dElFstShrtnrPswrdInp.val()// add password if there is or else do not add it in the request
+      },
+      function(data){
+          let html = `<button type="button" class="btn btn-outline-primary mr-5 copy-btn">Copy</button>
+          <p class="mb-0 pt-2"><a href="${data}">${data}</a></p>`;
+
+          $('.fast-shortener .alert-danger').removeClass('d-block');
+          $('.fast-shortener .alert-secondary').html(html).addClass('d-flex');
+
+          CpyShrtLnkBtnClck(); // To find element (btn) when it will be added to documnet
+      })
+      .fail(function(x) {
+        $('.fast-shortener .alert-danger').html(`Somethin went wrong! Error : ${x}`).addClass('d-block');
+      });
+}
 
 function copyToClipboard(str) {
     let el = document.createElement('textarea');
