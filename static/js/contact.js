@@ -14,6 +14,8 @@ let dElFrmCptInp = $('form .captcha input');
 
 let dElFrmAlrt = $('form .alert-danger');
 
+let dElFrmAlrtSccss = $('form .alert-success');
+
 let dElFrmCptBtn = $('form .captcha button');
 
 let emlRgx = /[0-9a-zA-Z]+\@+[a-z]+\.+['com']/;
@@ -89,6 +91,7 @@ function sndRqstToSrvr(){
     },
     function (data){
         console.log(data);
+        dElFrmAlrtSccss.html('Form sent successfully!').css('display', 'block');
     }
     );
 }
