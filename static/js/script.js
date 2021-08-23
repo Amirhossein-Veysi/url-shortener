@@ -1,6 +1,6 @@
 //! Variable
 
-let scrlSmSiz = 567;
+let scrlSmSiz = 576;
 
 let dElFstShrtnrOfstTp = $('.fast-shortener').offset().top;
 
@@ -29,7 +29,7 @@ function deCpyShrtLnkBtnClck() {
 //! DOM Event Handler
 
 function deNvBrClpsHidHandler(){
-    if($(window).width() >= scrlSmSiz){
+    if((window.innerWidth + 16) >= scrlSmSiz){
         $('.navbar-collapse-sm').attr('style', 'display: none !important;');
     }else{
         $('.navbar-collapse-sm').attr('style', '');
