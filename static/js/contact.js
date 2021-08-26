@@ -84,7 +84,7 @@ function addNoToCnvs(){
 }
 
 function sndRqstToSrvr(){
-    $.post('send-mail/', {
+    $.post('/contact', {
         name : dElFrmNmInp.val(),
         email : dElFrmEmlInp.val(),
         message : dElFrmMsgInp.val()

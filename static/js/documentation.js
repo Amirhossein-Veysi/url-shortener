@@ -47,7 +47,7 @@ function deWndwScrlHandler() {
 //! Aditinal Functions
 
 function nvBrClpsHid(){
-    if(($(window).width() - 16) >= scrlSmSiz){
+    if($(window).width() >= scrlSmSiz){
         $('nav .navbar-collapse-sm').attr('style', 'display: none !important;');
     }else{
         $('nav .navbar-collapse-sm').attr('style', '');

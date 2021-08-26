@@ -24,7 +24,7 @@ dElFrm.on('submit', {foo : 'bar'}, deFrmSbmtHandler);
 
 function deFrmSbmtHandler() {
     event.preventDefault();
-    if (dElFrmUrlInp.val() == '' || dElFrmPswrdInp.val() == ''){
+    if (dElFrmUrlInp.val() === '' || dElFrmPswrdInp.val() === ''){
         $('form .alert-danger').html('Please fill out the field below!').css('display', 'block')
     }else{
         shwLdngIcnAndRmvFrm();
@@ -45,7 +45,7 @@ function hidLdngIcnAndRmvFrm() {
 }
 
 function sndRqstToShrtnrLLog() {
-    $.post("https://ad7c576501d3.ngrok.io/logs", {
+    $.post("/logs", {
         "url" : dElFrmUrlInp.val(),
         "password" : dElFrmPswrdInp.val()
         },

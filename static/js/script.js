@@ -76,7 +76,7 @@ function deCpyShrtLnkBtnClckHandler() {
 //! Aditinal Functions
 
 function  sndRqstToShrtnr() {
-    $.post("make/", {
+    $.post("/make", {
         url: dElFstShrtnrUrlInp.val(), // add the url
         password: dElFstShrtnrPswrdInp.val()// add password if there is or else do not add it in the request
       },
